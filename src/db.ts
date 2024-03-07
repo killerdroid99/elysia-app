@@ -1,5 +1,6 @@
 import pg from "pg";
 import { drizzle } from "drizzle-orm/node-postgres";
+import * as schema from "./schema/schema";
 
 const client = new pg.Client({
   host: Bun.env.HOST,
@@ -19,4 +20,5 @@ try {
 
 export const db = drizzle(client, {
   logger: true,
+  schema,
 });
